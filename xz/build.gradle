@@ -1,0 +1,32 @@
+plugins {
+   id  'com.android.library'
+}
+
+android {
+    compileSdk 34
+    buildToolsVersion '34.0.0'
+    ndkVersion '25.2.9519653'
+
+    defaultConfig {
+        minSdkVersion 28
+        targetSdkVersion 34
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/xz/CMakeLists.txt"
+        }
+    }
+
+    buildFeatures {
+        prefabPublishing true
+    }
+
+    prefab {
+        liblzma {
+            headers "src/main/xz/header"
+        }
+    }
+
+    namespace 'moe.tarsin.ndk.xz'
+}
